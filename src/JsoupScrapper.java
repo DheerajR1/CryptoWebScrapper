@@ -66,12 +66,17 @@ public class JsoupScrapper {
 						product.setName(tdElements.get(i).getElementsByTag("div").get(0).getElementsByTag("div").get(0)
 								.getElementsByTag("div").get(0).getElementsByTag("p").get(0).html());
 						product.setLink(urlBase + tdElements.get(i).getElementsByTag("a").attr("href"));
+					} else if (i == 3) {
+						System.out.println(tdElements.get(i).getElementsByTag("a").get(0).html());
+						product.setFormattedPrice(tdElements.get(i).getElementsByTag("a").get(0).html());
 					}
 				} else if (tdElements.size() == 5) {
 					if (i == 2) {
 						product.setName(
 								tdElements.get(i).getElementsByTag("a").get(0).getElementsByTag("span").get(1).html());
 						product.setLink(urlBase + tdElements.get(i).getElementsByTag("a").attr("href"));
+					} else if (i == 3) {
+						product.setFormattedPrice(tdElements.get(i).getElementsByTag("span").get(0).html().replace("<!-- -->", ""));
 					}
 				}
 			}
